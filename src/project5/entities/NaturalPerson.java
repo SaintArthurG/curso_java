@@ -20,22 +20,22 @@ public class NaturalPerson extends Person {
     }
 
     public double taxesHeath() {
-        if (heathSpents > 0) {
-            return heathSpents * 0.5;
-        } else {
-            return 0.0;
-        }
+        return heathSpents * 0.5;
     }
 
     @Override
     public double taxes() {
         double taxess = 0.0;
         if (annualIncome > 20000.00) {
-            taxess = annualIncome + annualIncome * 0.25;
-            taxesHeath();
+            taxess = annualIncome * 0.25;
+            if (heathSpents > 0){
+                taxess = taxess - taxesHeath();
+            }
         } else {
-            taxess = annualIncome + annualIncome * 0.15;
-            taxesHeath();
+            taxess = annualIncome * 0.15;
+            if (heathSpents > 0){
+                taxess = taxess - taxesHeath();
+            }
         }
         return taxess;
     }

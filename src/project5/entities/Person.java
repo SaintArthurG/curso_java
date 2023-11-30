@@ -1,5 +1,7 @@
 package project5.entities;
 
+import java.util.List;
+
 public abstract class Person {
     private String name;
     protected Double annualIncome;
@@ -27,5 +29,13 @@ public abstract class Person {
     public void setAnnualIncome(Double annualIncome) {
         this.annualIncome = annualIncome;
     }
+
     public abstract double taxes();
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(name).append(": ").append("R$").append(String.format("%.2f%n", taxes()));
+        return sb.toString();
+    }
 }

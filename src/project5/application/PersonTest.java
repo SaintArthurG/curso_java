@@ -1,5 +1,6 @@
 package project5.application;
 
+import project5.entities.LegalPerson;
 import project5.entities.NaturalPerson;
 import project5.entities.Person;
 
@@ -21,21 +22,37 @@ public class PersonTest {
             String name = sc.nextLine();
             System.out.println("Annual income:");
             double annualIncome = sc.nextDouble();
-            if (ans == 'n'){
+            if (ans == 'n') {
                 System.out.print("Heath expenditures:");
                 double heathSpents = sc.nextDouble();
                 persons.add(new NaturalPerson(name, annualIncome, heathSpents));
             } else if (ans == 'l') {
-
+                System.out.print("Number of employess:");
+                int nmbEmp = sc.nextInt();
+                persons.add(new LegalPerson(name, annualIncome, nmbEmp));
             } else {
                 System.out.println("Incorrect Answer");
                 return;
             }
         }
+        System.out.println();
+        System.out.println("TAXES PAID:");
+
         for (Person p :
                 persons) {
-            System.out.println(p.taxes());
+            System.out.print(p.toString());
         }
+
+
+
+        double sum = 0.0;
+        System.out.println();
+        System.out.println("TOTAL TAXES: ");
+        for (Person c :
+                persons) {
+            sum += c.taxes();
+        }
+        System.out.println("R$" + sum);
 
         sc.close();
     }
