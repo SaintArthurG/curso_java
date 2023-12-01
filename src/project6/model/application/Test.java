@@ -1,8 +1,7 @@
-package project6.application;
+package project6.model.application;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Test {
